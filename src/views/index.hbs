@@ -1,0 +1,63 @@
+<div class="col-md-6  offset-md-3  ">
+    <div class="card bg-dark text-light">
+        <h1 class="h4 text-white">
+            Contacts List
+        </h1>
+    </div>
+    <div class="card-body">
+        {{#if contacts}}
+        <ul class="list-group">
+            {{#each contacts}}
+            <li class="list-group-item 
+                        d-flex 
+                        justify-content-between
+                        align-items-center">
+                        <div class="my-auto">
+                            <h3 class="h6">
+                                {{firstname}} {{lastname}}
+                            </h3>
+                            <p> {{email}} </p>
+                        </div>
+                        <div>
+                            <a href="/delete-contact/{{id}}" class="btn btn-danger">
+                            Delete
+                            </a>
+                        </div>
+                        <div>
+                            <a href="/edit-contact/{{id}}" class="btn btn-warning">
+                            Edit
+                            </a>
+                        </div>
+            </li>
+            {{/each}}
+        </ul>
+        {{else}}
+                <p class="fs-4 text-center">No Contacts Yet.</p>
+        {{/if}}
+    </div>
+    <div class="card-footer">
+        <form action="{{#unless contact.id}}/new-contact{{else}}/update-contact{{contact.id}}{{/unless}}" method="post">
+            <div class="row">
+                <div class="col">
+                    <label for="firstname">First Name:</label>
+                    <input type="text"
+                            name="firstname"
+                            placeholder="Firstname"
+                            class="form-control mb-3"
+                            value="{{contact.firstname}}"
+                            autofocus
+                            />
+                </div>
+                     <div class="col">
+                    <label for="lastname">First Name:</label>
+                    <input type="text"
+                            name="lastname"
+                            placeholder="Lastname"
+                            class="form-control mb-3"
+                            value="{{contact.lastname}}"
+                            />
+                        </div>
+            </div>
+        </form>
+    </div>
+</div>
