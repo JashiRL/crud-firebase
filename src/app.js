@@ -12,6 +12,7 @@ app.engine('.hbs', exphbs.create({
     defaultLayout: 'main', 
     extname: '.hbs'
 }).engine
+
 )
 app.set('view engine', '.hbs')
 
